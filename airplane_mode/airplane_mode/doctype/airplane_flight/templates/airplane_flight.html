@@ -1,0 +1,25 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<style>
+    .btn.btn-primary {
+        background-color: rgb(55, 133, 236);
+    }
+</style>
+
+<h1>{{ name }}</h1>
+<h2>Flight Details</h2>
+<ul>
+    {% set airline = frappe.db.get_value("Airplane", doc.airplane, 'airline') %}
+    <li>Airline: {{airline}}</li>
+    <li>{{doc.source_airport_code}}->{{doc.destination_airport_code}}</li>
+    <li>{{frappe.utils.format_date(doc.date_of_departure, "d MMMM, YYYY")}} | {{frappe.utils.format_time(doc.time_of_departure)}}</li>
+    <li>Duration:{{frappe.utils.format_duration(doc.duration)}}</li>
+    {% set flight_price = frappe.db.get_value("Airplane Ticket", doc.id , 'flight_price') %}
+    <li>Flight Price: {{ flight_price }}</li>
+</ul>
+<a href="http://127.0.0.1:8000/book-flight-ticket-web-form/new?flight={{ name }}&flight_price={{ flight_price}}"><button type="button" class="btn btn-primary btn-lg"> Book Flight</button></a>
+
+{% endblock %}
+
+<!-- this is a sample default web page template -->

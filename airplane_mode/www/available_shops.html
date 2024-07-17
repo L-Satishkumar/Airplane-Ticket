@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Available Shops</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: darkgray;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center;">Available Shops</h2>
+
+    <div class="card">
+        <div class="card-body">
+            <ul>
+                {% for shop in shops %}
+                    <li>
+                        <strong>{{ shop.shop_name }}</strong><br>
+                        <em>Shop Number:</em> {{ shop.shop_number }}<br>
+                        <em>Shop Location:</em> {{ shop.shop_location }}<br>
+                        <em>Airport:</em> {{ shop.airport }}<br>
+                        <em>Tenant Name:</em> {{ shop.tenant_name or 'N/A' }}<br>
+                        <em>Tenant Email:</em> {{ shop.tenant_email or 'N/A' }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+      </div>
+</body>
+</html>

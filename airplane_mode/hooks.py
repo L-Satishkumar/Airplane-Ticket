@@ -55,6 +55,15 @@ app_license = "mit"
 # automatically create page for each record of this doctype
 # website_generators = ["Web Page"]
 
+# website_route_rules = [
+#     {"from_route": "/show_me", "to_route": "show_me"}
+# ]
+
+website_route_rules = [
+    {"from_route": "/available-shops", "to_route": "available-shops"}
+]
+
+
 # Jinja
 # ----------
 
@@ -122,34 +131,45 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
+doc_events = {
+    "Airplane Ticket": {
+        "before_submit":"airplane_mode.airplane_mode.doctype.airplane_ticket.airplane_ticket.check_status_before_submit"
+    }
 # 	"*": {
 # 		"on_update": "method",
 # 		"on_cancel": "method",
 # 		"on_trash": "method"
 # 	}
-# }
+}
 
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
+scheduler_events = {
+
+
+    # "cron": {
+    #     "0 0 1 * *": [
+    #         "airplane_mode.airplane_mode.task.send_rent_reminders"
+    #     ]
+    # }
+
 # 	"all": [
 # 		"airplane_mode.tasks.all"
 # 	],
-# 	"daily": [
-# 		"airplane_mode.tasks.daily"
-# 	],
+	"daily": [
+		"airplane_mode.airplane_mode.task.send_rent_reminders"
+	],
 # 	"hourly": [
 # 		"airplane_mode.tasks.hourly"
 # 	],
 # 	"weekly": [
 # 		"airplane_mode.tasks.weekly"
 # 	],
-# 	"monthly": [
-# 		"airplane_mode.tasks.monthly"
-# 	],
-# }
+	# "monthly": [
+	# 	"airplane_mode.tasks.monthly"
+	# ],
+}
 
 # Testing
 # -------

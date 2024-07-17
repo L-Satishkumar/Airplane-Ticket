@@ -1,0 +1,16 @@
+<style>
+	.card-link {
+		color: rgb(0, 140, 255);
+	}
+</style>
+<div>
+	<div class="card" style="width: 77rem;">
+		<div class="card-body">
+		  <h5 class="card-title">{{ doc.get_title() or doc.name }}</h5>
+		  <p class="card-text">{{ doc.source_airport_code }} -> {{ doc.destination_airport_code }}</p>
+		  <p>{{frappe.utils.format_date(doc.date_of_departure, "d MMMM, YYYY")}} | {{frappe.utils.format_time(doc.time_of_departure)}} | {{frappe.utils.format_duration(doc.duration)}}</p>
+		  <a href="{{ doc.route }}" class="card-link">View Flight</a>
+		</div>
+	</div>
+</div>
+<!-- this is a sample default list template -->
